@@ -25,15 +25,15 @@ public class License implements Serializable {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "user_type")
+    @Column(name = "license_type")
     private UserType userType;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "owner_id")
     @JsonManagedReference
     private String user;
 
-    @Column(name = "product")
+    @Column(name = "products")
     private ProductType product;
 
     public License() {}
