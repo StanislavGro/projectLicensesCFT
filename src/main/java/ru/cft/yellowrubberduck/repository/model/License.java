@@ -31,14 +31,14 @@ public class License implements Serializable {
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user")
     @JsonManagedReference
-    private User user;
+    private String user;
 
     @Column(name = "product")
     private ProductType product;
 
     public License() {}
 
-    public License(LocalDate start_date, LocalDate end_date, UserType licenseType, User ownerID, ProductType product) {
+    public License(LocalDate start_date, LocalDate end_date, UserType licenseType, String ownerID, ProductType product) {
         this.startDate = start_date;
         this.endDate = end_date;
         this.userType = licenseType;
@@ -58,7 +58,7 @@ public class License implements Serializable {
         this.userType = userType;
     }
 
-    public void setOwnerID(User user) {
+    public void setOwnerID(String user) {
         this.user = user;
     }
 
@@ -80,7 +80,7 @@ public class License implements Serializable {
         return userType;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
