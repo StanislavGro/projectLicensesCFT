@@ -38,9 +38,9 @@ public class License implements Serializable {
 
     public License() {}
 
-    public License(LocalDate start_date, LocalDate end_date, UserType licenseType, String ownerID, ProductType product) {
-        this.startDate = start_date;
-        this.endDate = end_date;
+    public License(LocalDate startDate, LocalDate endDate, UserType licenseType, String ownerID, ProductType product) {
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.userType = licenseType;
         this.user = ownerID;
         this.product = product;
