@@ -1,10 +1,13 @@
 package ru.cft.yellowrubberduck.repository.model;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import ru.cft.yellowrubberduck.repository.model.enums.UserType;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.*;
 
@@ -24,6 +27,10 @@ public class UserEntity implements Serializable {
 
     @Column(name = "user_type")
     private UserType userType;
+
+    @OneToMany(mappedBy = "user")
+    @JsonBackReference
+    private ArrayList<License> licenseList;
 
     public UserEntity(){}
 

@@ -19,18 +19,18 @@ public class License implements Serializable {
     @Column(name = "key")
     private String openKey;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "start_date")
     private LocalDate startDate;
 
-    @Temporal(TemporalType.DATE)
+//    @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
-    private String user;
+    private UserEntity user;
 
     @Column(name = "product")
     private ProductType product;
@@ -38,7 +38,7 @@ public class License implements Serializable {
     public License() {
     }
 
-    public License(String openKey, LocalDate startDate, LocalDate endDate, String user, ProductType product) {
+    public License(String openKey, LocalDate startDate, LocalDate endDate, UserEntity user, ProductType product) {
         this.openKey = openKey;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -62,7 +62,7 @@ public class License implements Serializable {
         this.product = product;
     }
 
-    public void setUser(String user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
@@ -70,17 +70,15 @@ public class License implements Serializable {
         return openKey;
     }
 
-    @Temporal(TemporalType.DATE)
     public LocalDate getStartDate() {
         return startDate;
     }
 
-    @Temporal(TemporalType.DATE)
     public LocalDate getEndDate() {
         return endDate;
     }
 
-    public String getUser() {
+    public UserEntity getUser() {
         return user;
     }
 
