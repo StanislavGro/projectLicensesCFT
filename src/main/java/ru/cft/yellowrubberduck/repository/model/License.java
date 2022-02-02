@@ -2,7 +2,6 @@ package ru.cft.yellowrubberduck.repository.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import ru.cft.yellowrubberduck.repository.model.enums.ProductType;
-import ru.cft.yellowrubberduck.repository.model.enums.UserType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,36 +13,41 @@ public class License implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "license_id")
+    @Column(name = "id")
     private long id;
 
+    @Column(name = "key")
+    private String openKey;
+
     @Temporal(TemporalType.DATE)
-    @Column(name = "create_date")
+    @Column(name = "start_date")
     private LocalDate startDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "license_type")
-    private UserType userType;
-
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "user_id")
     @JsonManagedReference
     private String user;
 
-    @Column(name = "products")
+    @Column(name = "product")
     private ProductType product;
 
-    public License() {}
+    public License() {
+    }
 
-    public License(LocalDate startDate, LocalDate endDate, UserType licenseType, String ownerID, ProductType product) {
+    public License(String openKey, LocalDate startDate, LocalDate endDate, String user, ProductType product) {
+        this.openKey = openKey;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.userType = licenseType;
-        this.user = ownerID;
+        this.user = user;
         this.product = product;
+    }
+
+    public void setOpenKey(String openKey) {
+        this.openKey = openKey;
     }
 
     public void setStartDate(LocalDate startDate) {
@@ -54,16 +58,16 @@ public class License implements Serializable {
         this.endDate = endDate;
     }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    public void setProduct(ProductType product) {
+        this.product = product;
     }
 
-    public void setOwnerID(String user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
-    public void setProduct(ProductType product) {
-        this.product = product;
+    public String getOpenKey() {
+        return openKey;
     }
 
     @Temporal(TemporalType.DATE)
@@ -74,10 +78,6 @@ public class License implements Serializable {
     @Temporal(TemporalType.DATE)
     public LocalDate getEndDate() {
         return endDate;
-    }
-
-    public UserType getUserType() {
-        return userType;
     }
 
     public String getUser() {
