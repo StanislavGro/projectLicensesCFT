@@ -12,7 +12,7 @@ import java.util.List;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Table(name = "myUser")
+@Table(name = "My_User")
 public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
