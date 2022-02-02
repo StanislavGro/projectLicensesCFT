@@ -1,6 +1,8 @@
 package ru.cft.yellowrubberduck.repository.model;
 
 
+import ru.cft.yellowrubberduck.repository.model.enums.UserType;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
