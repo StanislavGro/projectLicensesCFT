@@ -12,7 +12,7 @@ import java.util.List;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "myUser")
 public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -30,7 +30,7 @@ public class UserEntity implements Serializable {
 
     @OneToMany(mappedBy = "user")
     @JsonBackReference
-    private ArrayList<License> licenseList;
+    private List<License> licenseList;
 
     public UserEntity(){}
 
