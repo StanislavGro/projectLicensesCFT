@@ -1,6 +1,7 @@
 package ru.cft.optimusgang.licenses.repository.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.GenericGenerator;
 import ru.cft.optimusgang.licenses.repository.model.enums.ProductType;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 public class License implements Serializable {
 
     @Id
+    @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;

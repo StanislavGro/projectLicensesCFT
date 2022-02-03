@@ -1,6 +1,7 @@
 package ru.cft.optimusgang.licenses.repository.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +11,7 @@ import java.io.Serializable;
 public class LicenseLog implements Serializable {
 
     @Id
+    @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
