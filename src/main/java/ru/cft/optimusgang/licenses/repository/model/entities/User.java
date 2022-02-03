@@ -12,9 +12,8 @@ import java.util.List;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Table(name = "users")
-public class User implements Serializable {
-
+@Table(name = "My_User")
+public class UserEntity implements Serializable {
     @Id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(strategy = IDENTITY)
@@ -34,9 +33,9 @@ public class User implements Serializable {
     @JsonBackReference
     private List<License> licenseList;
 
-    public User(){}
+    public UserEntity(){}
 
-    public User(String userLogin, String userEmail, UserType userType){
+    public UserEntity(String userLogin, String userEmail, UserType userType){
         this.userLogin = userLogin;
         this.userEmail = userEmail;
         this.userType = userType;
