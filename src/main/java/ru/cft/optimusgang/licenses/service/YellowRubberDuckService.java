@@ -1,3 +1,4 @@
+/*
 package ru.cft.optimusgang.licenses.service;
 
 import org.springframework.http.HttpStatus;
@@ -35,3 +36,4 @@ public class YellowRubberDuckService {
         return "";
     }
 }
+*/

@@ -48,6 +48,9 @@ public class License implements Serializable {
         this.product = product;
     }
 
+    public Long getId() {
+        return id;
+    }
     public void setOpenKey(String openKey) {
         this.openKey = openKey;
     }

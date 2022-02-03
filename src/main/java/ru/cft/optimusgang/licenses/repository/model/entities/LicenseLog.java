@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "License_Logs")
+@Table(name = "license_logs")
 public class LicenseLog implements Serializable {
 
     @Id

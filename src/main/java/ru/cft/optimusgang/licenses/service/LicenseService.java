@@ -1,9 +1,5 @@
 package ru.cft.optimusgang.licenses.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import ru.cft.optimusgang.licenses.repository.LicenseRepository;
-import ru.cft.optimusgang.licenses.repository.SampleRepository;
-import ru.cft.optimusgang.licenses.repository.model.SampleEntity;
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
 import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 
@@ -15,11 +11,11 @@ public interface LicenseService {
     public License getNewLicense();
 
     //GET /license/{licenseId}
-    public License getLicenseByUserId();
+    public License getLicenseByUserId(Long licenseId);
 
     //GET /license/list
-    public List<License> getAllLicensesByCompanyId();
+    public List<License> getAllLicensesByCompanyId(Long companyId);
 
     //POST /license/check
-    public LicenseStatus checkLicense();
+    public LicenseStatus checkLicense(License license);
 }
