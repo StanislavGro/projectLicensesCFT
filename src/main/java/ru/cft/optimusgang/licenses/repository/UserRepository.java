@@ -1,9 +1,9 @@
-package ru.cft.yellowrubberduck.repository;
+package ru.cft.optimusgang.licenses.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.cft.yellowrubberduck.repository.model.UserEntity;
+import ru.cft.optimusgang.licenses.repository.model.entities.User;
 
 @Repository
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
+public interface UserRepository extends CrudRepository<User, Long> {
 }

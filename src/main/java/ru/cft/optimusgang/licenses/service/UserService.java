@@ -1,16 +1,15 @@
-package ru.cft.yellowrubberduck.service;
+package ru.cft.optimusgang.licenses.service;
 
-import ru.cft.yellowrubberduck.repository.model.UserEntity;
-import ru.cft.yellowrubberduck.repository.model.dto.UserDto;
+import ru.cft.optimusgang.licenses.repository.model.entities.User;
 
 import java.util.List;
 import java.util.Optional;
 
 
 public interface UserService {
-    public List<UserEntity> getAllUsers();
+    public List<User> getAllUsers();
 
-    public Optional<UserEntity> getUserById(Long userId);
+    public Optional<User> getUserById(Long userId);
 
-    public void createUser(UserEntity userEntity);
+    public void createUser(User user);
 }

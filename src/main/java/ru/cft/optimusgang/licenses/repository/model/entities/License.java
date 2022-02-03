@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "licenses")
+@Table(name = "Licenses")
 public class License implements Serializable {
 
     @Id
@@ -51,6 +51,7 @@ public class License implements Serializable {
     public Long getId() {
         return id;
     }
+
     public void setOpenKey(String openKey) {
         this.openKey = openKey;
     }

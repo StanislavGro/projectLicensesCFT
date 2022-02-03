@@ -1,12 +1,11 @@
-package ru.cft.yellowrubberduck.service.impl;
+package ru.cft.optimusgang.licenses.service.impl;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.cft.yellowrubberduck.repository.UserRepository;
-import ru.cft.yellowrubberduck.repository.model.UserEntity;
-import ru.cft.yellowrubberduck.repository.model.dto.UserDto;
-import ru.cft.yellowrubberduck.service.UserService;
+import ru.cft.optimusgang.licenses.repository.UserRepository;
+import ru.cft.optimusgang.licenses.repository.model.entities.User;
+import ru.cft.optimusgang.licenses.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,19 +23,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getAllUsers() {
-        return (List<UserEntity>) userRepository.findAll();
+    public List<User> getAllUsers() {
+        return (List<User>) userRepository.findAll();
     }
 
     @Override
-    public Optional<UserEntity> getUserById(Long userId) {
+    public Optional<User> getUserById(Long userId) {
         return userRepository.findById(userId);
     }
 
     @Override
-    public void createUser(UserEntity userEntity) {
-        //UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
-        userRepository.save(userEntity);
+    public void createUser(User user) {
+        //User user = modelMapper.map(userDto, User.class);
+        userRepository.save(user);
     }
 
 }

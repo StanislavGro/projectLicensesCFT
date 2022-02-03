@@ -1,6 +1,5 @@
 package ru.cft.optimusgang.licenses.repository.model.entities;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 import ru.cft.optimusgang.licenses.repository.model.enums.UserType;
@@ -12,8 +11,8 @@ import java.util.List;
 import static javax.persistence.GenerationType.*;
 
 @Entity
-@Table(name = "My_User")
-public class UserEntity implements Serializable {
+@Table(name = "Users")
+public class User implements Serializable {
     @Id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(strategy = IDENTITY)
@@ -33,9 +32,9 @@ public class UserEntity implements Serializable {
     @JsonBackReference
     private List<License> licenseList;
 
-    public UserEntity(){}
+    public User(){}
 
-    public UserEntity(String userLogin, String userEmail, UserType userType){
+    public User(String userLogin, String userEmail, UserType userType){
         this.userLogin = userLogin;
         this.userEmail = userEmail;
         this.userType = userType;

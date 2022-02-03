@@ -1,10 +1,9 @@
-package ru.cft.yellowrubberduck.controller;
+package ru.cft.optimusgang.licenses.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.cft.yellowrubberduck.repository.model.UserEntity;
-import ru.cft.yellowrubberduck.repository.model.dto.UserDto;
-import ru.cft.yellowrubberduck.service.UserService;
+import ru.cft.optimusgang.licenses.repository.model.entities.User;
+import ru.cft.optimusgang.licenses.service.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,18 +19,18 @@ public class UserController {
     }
 
     @GetMapping("/user/all")
-    public List<UserEntity> getAllUsers(){
+    public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/user/{id}")
-    public Optional<UserEntity> getUserById(@PathVariable Long id)
+    public Optional<User> getUserById(@PathVariable Long id)
     {
         return userService.getUserById(id);
     }
 
     @PostMapping
-    public void createUser(@RequestBody UserEntity userEntity){
-        userService.createUser(userEntity);
+    public void createUser(@RequestBody User user){
+        userService.createUser(user);
     }
 }

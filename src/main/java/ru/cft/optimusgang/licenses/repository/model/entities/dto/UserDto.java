@@ -1,7 +1,7 @@
-package ru.cft.yellowrubberduck.repository.model.dto;
+package ru.cft.optimusgang.licenses.repository.model.entities.dto;
 
 import lombok.Data;
-import ru.cft.yellowrubberduck.repository.model.enums.UserType;
+import ru.cft.optimusgang.licenses.repository.model.enums.UserType;
 
 @Data
 public class UserDto {
@@ -13,4 +13,5 @@ public class UserDto {
     private String userEmail;
 
     private UserType userType;
+
 }
