@@ -7,6 +7,7 @@ import ru.cft.yellowrubberduck.repository.model.UserEntity;
 import ru.cft.yellowrubberduck.service.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> getUserById(Long userId) {
-        return null;
+    public Optional<UserEntity> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 
 }
