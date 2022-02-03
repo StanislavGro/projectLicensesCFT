@@ -16,7 +16,7 @@ public class LicenseLog implements Serializable {
 
     @OneToOne
     @JoinColumn(name = "license_id")
-//    @JsonManagedReference
+    @JsonManagedReference
     private License license;
 
     @Column(name = "license_status")
