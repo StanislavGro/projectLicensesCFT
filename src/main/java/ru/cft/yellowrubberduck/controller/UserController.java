@@ -1,11 +1,9 @@
 package ru.cft.yellowrubberduck.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.cft.yellowrubberduck.repository.model.UserEntity;
+import ru.cft.yellowrubberduck.repository.model.dto.UserDto;
 import ru.cft.yellowrubberduck.service.UserService;
 
 import java.util.List;
@@ -30,5 +28,10 @@ public class UserController {
     public Optional<UserEntity> getUserById(@PathVariable Long id)
     {
         return userService.getUserById(id);
+    }
+
+    @PostMapping
+    public void createUser(@RequestBody UserEntity userEntity){
+        userService.createUser(userEntity);
     }
 }

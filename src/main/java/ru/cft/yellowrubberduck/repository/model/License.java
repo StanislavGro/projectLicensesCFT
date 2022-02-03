@@ -29,7 +29,7 @@ public class License implements Serializable {
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+//    @JsonManagedReference
     private UserEntity user;
 
     @Column(name = "product")
