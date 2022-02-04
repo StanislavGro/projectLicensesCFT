@@ -25,7 +25,7 @@ public class LicenseController {
     новой сгенерированной лицензии.*/
 
     @GetMapping("/license/new/{userId}")
-    public License getNewLicense(@PathVariable Long userId){
+    public License getNewLicense(@PathVariable long userId){
         return licenseService.getNewLicense(userId);
     }
 
@@ -40,20 +40,20 @@ public class LicenseController {
     При запросе для компании
     возвращать последнюю выданную
             лицензию*/
-    @GetMapping("/license/{licenseId}")
+   /* @GetMapping("/license/{licenseId}")
     public License getLicenseById(@PathVariable Long licenseId, @RequestBody Long userId)
     {
         return licenseService.getLicenseByUserId(licenseId, userId);
     }
 
-   /* GET /license/list в теле
+   *//* GET /license/list в теле
     запроса companyId; возвращает
     список ID лицензий для
-    полученной companyId.*/
+    полученной companyId.*//*
     @PostMapping
     public List<License> getAllLicensesByCompanyId(@RequestBody Long companyId){
         return licenseService.getAllLicensesByCompanyId(companyId);
-    }
+    }*/
 
     /*POST /license/check в теле запроса файл лицензии;
     возвращает 200 OK, если лицензия
