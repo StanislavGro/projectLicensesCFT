@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface LicenseRepository extends CrudRepository<License, Long> {
 
-    @Query(value = "SELECT * FROM licenses FETCH FIRST 1 ROWS ONLY WHERE license.id = :licenseId AND license.user.userId = :userId ORDER BY license.startDate DESC ", nativeQuery = true)
+    @Query("SELECT license FROM License license WHERE license.id = :licenseId" +
+            " AND license.user.userId = :userId " +
+            "ORDER BY license.startDate DESC")
     public License getLicenseByUserId(@Param("licenseId")Long licenseId, @Param("userId")Long userId);
 
     @Query("SELECT license FROM License license WHERE license.user.userId = :companyId AND license.user.userType = 'COMPANY'")
