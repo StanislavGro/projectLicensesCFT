@@ -24,9 +24,9 @@ public class LicenseController {
     или companyId; возвращает файл
     новой сгенерированной лицензии.*/
 
-    @GetMapping("/license/new")
-    public License getAllUsers(){
-        return licenseService.getNewLicense();
+    @GetMapping("/license/new/{userId}")
+    public License getNewLicense(@PathVariable Long userId){
+        return licenseService.getNewLicense(userId);
     }
 
 

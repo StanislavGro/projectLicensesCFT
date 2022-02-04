@@ -29,7 +29,7 @@ public class User implements Serializable {
     private UserType userType;
 
     @OneToMany(mappedBy = "user")
-    @JsonBackReference
+    //@JsonBackReference
     private List<License> licenseList;
 
     public User(){}
