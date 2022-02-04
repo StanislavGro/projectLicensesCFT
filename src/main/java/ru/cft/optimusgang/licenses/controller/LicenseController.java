@@ -1,9 +1,12 @@
 package ru.cft.optimusgang.licenses.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
 import ru.cft.optimusgang.licenses.repository.model.entities.User;
+import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 import ru.cft.optimusgang.licenses.service.LicenseService;
 import ru.cft.optimusgang.licenses.service.UserService;
 
@@ -43,7 +46,7 @@ public class LicenseController {
     @GetMapping("/license/{licenseId}/{userId}")
     public License getLicenseById(@PathVariable Long licenseId, @PathVariable Long userId)
     {
-        return licenseService.getLicenseByUserId(licenseId, userId);
+        return   licenseService.getLicenseByUserId(licenseId, userId);
     }
 
    /* GET /license/list в теле
@@ -61,4 +64,16 @@ public class LicenseController {
 418 с типом ошибки в теле ответа:
     LICENSE_NOT_EXIST,
     LICENSE_EXPIRED*/
+    @PostMapping("/license/check")
+    public ResponseEntity<String> checkLicense(@RequestBody License license){
+        LicenseStatus licenseStatus = licenseService.checkLicense(license);
+        if (licenseStatus.equals(LicenseStatus.LICENSE_VALID)) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)//200
+                    .body(licenseStatus.toString());
+        }
+        return ResponseEntity
+                .status(HttpStatus.I_AM_A_TEAPOT)//418
+                .body(licenseStatus.toString());
+    }
 }

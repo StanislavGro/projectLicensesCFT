@@ -31,13 +31,30 @@ public class License implements Serializable {
 
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
-    @JsonManagedReference
+    //@JsonManagedReference
     private User user;
 
     @Column(name = "product")
     private ProductType product;
 
     public License() {
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof License)) {
+            return false;
+        }
+
+        License anotherLicense = (License) obj;
+        // Compare the data members and return accordingly
+        return (this.openKey.compareTo(anotherLicense.openKey) == 0)
+                && (this.startDate.isEqual(anotherLicense.startDate))
+                && (this.endDate.isEqual(anotherLicense.endDate))
+                && (this.product == anotherLicense.product);
     }
 
     public License(String openKey, LocalDate startDate, LocalDate endDate, User user, ProductType product) {

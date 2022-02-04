@@ -64,23 +64,24 @@ public class LicenseServiceImpl implements LicenseService {
     @Override
     public LicenseStatus checkLicense(License license) {
 
-        //в теле запроса файл лицензии;
-        //        возвращает 200 OK, если лицензия
-        //        корректна и актуальна, иначе код
-        //        418 с типом ошибки в теле ответа:
-        //        LICENSE_NOT_EXIST,
-        //                LICENSE_EXPIRED
-        Optional<License> licenseToCheck = licenseRepository.findById(license.getId());
-        if (!licenseToCheck.isPresent()) {
+        Optional<License> licenseFromDb = licenseRepository.findById(license.getId());
+        if (!licenseFromDb.isPresent()) {
             return LicenseStatus.LICENSE_NOT_EXIST;
         }
-        else if (licenseToCheck.get().getEndDate().isBefore(LocalDate.now())){
-            return LicenseStatus.LICENSE_EXPIRED;
+        else if(!licenseFromDb.get().equals(license)) {
+            return LicenseStatus.LICENSE_INVALID;
         }
+        if (licenseFromDb.get().getEndDate().isBefore(LocalDate.now())){
+                return LicenseStatus.LICENSE_EXPIRED;
+            }
         else {
             ///алгоритм проверки лицензии
-            //return LicenseStatus.LICENSE_INVALID;
+            String openKey = licenseFromDb.get().getOpenKey();
+            char lastChar = openKey.charAt(openKey.length() - 1);
+            if(Character.isAlphabetic(lastChar)) {
+                return LicenseStatus.LICENSE_VALID;
+            }
         }
-        return LicenseStatus.LICENSE_VALID;
+        return LicenseStatus.LICENSE_INVALID;
     }
 }

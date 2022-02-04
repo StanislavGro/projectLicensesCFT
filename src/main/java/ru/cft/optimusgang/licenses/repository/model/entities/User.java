@@ -33,6 +33,23 @@ public class User implements Serializable {
     //@JsonBackReference
     //private List<License> licenseList;
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (!(obj instanceof User)) {
+            return false;
+        }
+
+        User anotherUser = (User) obj;
+        // Compare the data members and return accordingly
+        return (this.userId.compareTo(anotherUser.userId) == 0)
+                && (this.userLogin.compareTo(anotherUser.userLogin) == 0)
+                && (this.userEmail.compareTo(anotherUser.userEmail) == 0)
+                && (this.userType.compareTo(anotherUser.userType) == 0);
+    }
+
     public User(){}
 
     public User(String userLogin, String userEmail, UserType userType){
