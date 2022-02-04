@@ -49,11 +49,11 @@ public class LicenseController {
    /* GET /license/list в теле
     запроса companyId; возвращает
     список ID лицензий для
-    полученной companyId.*//*
-    @PostMapping
-    public List<License> getAllLicensesByCompanyId(@RequestBody Long companyId){
+    полученной companyId.*/
+    @GetMapping("/license/list/{companyId}")
+    public List<License> getAllLicensesByCompanyId(@PathVariable Long companyId){
         return licenseService.getAllLicensesByCompanyId(companyId);
-    }*/
+    }
 
     /*POST /license/check в теле запроса файл лицензии;
     возвращает 200 OK, если лицензия

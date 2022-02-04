@@ -28,9 +28,10 @@ public class User implements Serializable {
     @Column(name = "user_type")
     private UserType userType;
 
-    @OneToMany(mappedBy = "user")
+    //нигде не используется
+    //@OneToMany(mappedBy = "user")
     //@JsonBackReference
-    private List<License> licenseList;
+    //private List<License> licenseList;
 
     public User(){}
 
