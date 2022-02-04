@@ -13,4 +13,6 @@ public interface UserService {
     public Optional<UserEntity> getUserById(Long userId);
 
     public void createUser(UserEntity userEntity);
+
+    public void updateUser(Long userId, UserEntity userEntity);
 }

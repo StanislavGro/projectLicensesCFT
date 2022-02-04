@@ -18,9 +18,10 @@ public class UserServiceImpl implements UserService {
     private ModelMapper modelMapper;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository)
+    public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper)
     {
         this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
     }
 
     @Override
@@ -37,6 +38,14 @@ public class UserServiceImpl implements UserService {
     public void createUser(UserEntity userEntity) {
         //UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         userRepository.save(userEntity);
+    }
+
+    @Override
+    public void updateUser(Long userId, UserEntity userEntity) {
+        Optional<UserEntity> tempUser = userRepository.findById(userId);
+        UserEntity user = tempUser.get();
+        modelMapper.map(userEntity, user);
+        userRepository.save(user);
     }
 
 }

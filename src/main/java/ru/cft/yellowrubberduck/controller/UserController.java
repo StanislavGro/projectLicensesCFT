@@ -1,12 +1,14 @@
 package ru.cft.yellowrubberduck.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.cft.yellowrubberduck.repository.model.UserEntity;
 import ru.cft.yellowrubberduck.repository.model.dto.UserDto;
 import ru.cft.yellowrubberduck.service.UserService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -33,5 +35,15 @@ public class UserController {
     @PostMapping
     public void createUser(@RequestBody UserEntity userEntity){
         userService.createUser(userEntity);
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<Void> updateUser(@PathVariable("id") Long id, @RequestBody UserEntity userEntity){
+        try {
+            userService.updateUser(id, userEntity);
+            return ResponseEntity.ok().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
