@@ -11,7 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
     public UserController(UserService userService){
@@ -29,7 +29,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping
+    @PostMapping("/user")
     public void createUser(@RequestBody User user){
         userService.createUser(user);
     }

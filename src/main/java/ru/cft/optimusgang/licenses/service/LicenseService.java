@@ -11,7 +11,7 @@ public interface LicenseService {
     public License getNewLicense();
 
     //GET /license/{licenseId}
-    public License getLicenseByUserId(Long licenseId);
+    public License getLicenseByUserId(Long licenseId, Long userId);
 
     //GET /license/list
     public List<License> getAllLicensesByCompanyId(Long companyId);

@@ -29,8 +29,8 @@ public class LicenseServiceImpl implements LicenseService {
     }
 
     @Override
-    public License getLicenseByUserId(Long userId) {
-        return licenseRepository.findByUserId(userId);
+    public License getLicenseByUserId(Long licenseId, Long userId) {
+        return licenseRepository.getLicenseByUserId(licenseId, userId);
     }
 
     @Override
