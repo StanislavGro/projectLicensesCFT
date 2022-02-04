@@ -40,13 +40,13 @@ public class LicenseController {
     При запросе для компании
     возвращать последнюю выданную
             лицензию*/
-   /* @GetMapping("/license/{licenseId}")
-    public License getLicenseById(@PathVariable Long licenseId, @RequestBody Long userId)
+    @GetMapping("/license/{licenseId}/{userId}")
+    public License getLicenseById(@PathVariable Long licenseId, @PathVariable Long userId)
     {
         return licenseService.getLicenseByUserId(licenseId, userId);
     }
 
-   *//* GET /license/list в теле
+   /* GET /license/list в теле
     запроса companyId; возвращает
     список ID лицензий для
     полученной companyId.*//*
