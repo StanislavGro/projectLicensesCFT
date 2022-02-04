@@ -1,11 +1,13 @@
 package ru.cft.optimusgang.licenses.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.cft.optimusgang.licenses.repository.model.entities.User;
 import ru.cft.optimusgang.licenses.service.UserService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -32,5 +34,15 @@ public class UserController {
     @PostMapping("/user")
     public void createUser(@RequestBody User user){
         userService.createUser(user);
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<Void> updateUser(@PathVariable("id") Long id, @RequestBody UserEntity userEntity){
+        try {
+            userService.updateUser(id, userEntity);
+            return ResponseEntity.ok().build();
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
