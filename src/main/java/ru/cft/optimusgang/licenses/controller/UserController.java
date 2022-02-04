@@ -3,7 +3,7 @@ package ru.cft.optimusgang.licenses.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.cft.optimusgang.licenses.repository.model.entities.User;
+import ru.cft.optimusgang.licenses.repository.model.entities.UserEntity;
 import ru.cft.optimusgang.licenses.service.UserService;
 
 import java.util.List;
@@ -21,18 +21,18 @@ public class UserController {
     }
 
     @GetMapping("/user/all")
-    public List<User> getAllUsers(){
+    public List<UserEntity> getAllUsers(){
         return userService.getAllUsers();
     }
 
     @GetMapping("/user/{id}")
-    public Optional<User> getUserById(@PathVariable Long id)
+    public Optional<UserEntity> getUserById(@PathVariable Long id)
     {
         return userService.getUserById(id);
     }
 
     @PostMapping("/user")
-    public void createUser(@RequestBody User user){
+    public void createUser(@RequestBody UserEntity user){
         userService.createUser(user);
     }
 

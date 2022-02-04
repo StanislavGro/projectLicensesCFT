@@ -5,16 +5,12 @@ import org.springframework.stereotype.Service;
 import ru.cft.optimusgang.licenses.repository.LicenseRepository;
 import ru.cft.optimusgang.licenses.repository.UserRepository;
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
-import ru.cft.optimusgang.licenses.repository.model.entities.User;
+import ru.cft.optimusgang.licenses.repository.model.entities.UserEntity;
 import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 import ru.cft.optimusgang.licenses.repository.model.enums.ProductType;
 import ru.cft.optimusgang.licenses.service.LicenseService;
 
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.time.Month;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 @Service
@@ -32,7 +28,7 @@ public class LicenseServiceImpl implements LicenseService {
     @Override
     public License getNewLicense(Long userId) {
         License newLicense = new License();
-        User user = userRepository.findById(userId).get();
+        UserEntity user = userRepository.findById(userId).get();
         newLicense.setUser(user);
 
         LocalDate startDate = LocalDate.now();

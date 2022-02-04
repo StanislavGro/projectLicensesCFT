@@ -1,6 +1,5 @@
 package ru.cft.optimusgang.licenses.repository.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
 import ru.cft.optimusgang.licenses.repository.model.enums.ProductType;
 
@@ -32,7 +31,7 @@ public class License implements Serializable {
     @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     //@JsonManagedReference
-    private User user;
+    private UserEntity user;
 
     @Column(name = "product")
     private ProductType product;
@@ -57,7 +56,7 @@ public class License implements Serializable {
                 && (this.product == anotherLicense.product);
     }
 
-    public License(String openKey, LocalDate startDate, LocalDate endDate, User user, ProductType product) {
+    public License(String openKey, LocalDate startDate, LocalDate endDate, UserEntity user, ProductType product) {
         this.openKey = openKey;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -85,7 +84,7 @@ public class License implements Serializable {
         this.product = product;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserEntity user) {
         this.user = user;
     }
 
@@ -101,7 +100,7 @@ public class License implements Serializable {
         return endDate;
     }
 
-    public User getUser() {
+    public UserEntity getUser() {
         return user;
     }
 

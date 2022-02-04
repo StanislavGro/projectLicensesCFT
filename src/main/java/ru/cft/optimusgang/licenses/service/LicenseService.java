@@ -1,7 +1,6 @@
 package ru.cft.optimusgang.licenses.service;
 
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
-import ru.cft.optimusgang.licenses.repository.model.entities.User;
 import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 
 import java.util.List;

@@ -1,18 +1,16 @@
 package ru.cft.optimusgang.licenses.repository.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.GenericGenerator;
 import ru.cft.optimusgang.licenses.repository.model.enums.UserType;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 import static javax.persistence.GenerationType.*;
 
 @Entity
 @Table(name = "Users")
-public class User implements Serializable {
+public class UserEntity implements Serializable {
     @Id
     @GenericGenerator(name = "generator", strategy = "increment")
     @GeneratedValue(strategy = IDENTITY)
@@ -38,11 +36,11 @@ public class User implements Serializable {
         if (obj == this) {
             return true;
         }
-        if (!(obj instanceof User)) {
+        if (!(obj instanceof UserEntity)) {
             return false;
         }
 
-        User anotherUser = (User) obj;
+        UserEntity anotherUser = (UserEntity) obj;
         // Compare the data members and return accordingly
         return (this.userId.compareTo(anotherUser.userId) == 0)
                 && (this.userLogin.compareTo(anotherUser.userLogin) == 0)
@@ -50,9 +48,9 @@ public class User implements Serializable {
                 && (this.userType.compareTo(anotherUser.userType) == 0);
     }
 
-    public User(){}
+    public UserEntity(){}
 
-    public User(String userLogin, String userEmail, UserType userType){
+    public UserEntity(String userLogin, String userEmail, UserType userType){
         this.userLogin = userLogin;
         this.userEmail = userEmail;
         this.userType = userType;

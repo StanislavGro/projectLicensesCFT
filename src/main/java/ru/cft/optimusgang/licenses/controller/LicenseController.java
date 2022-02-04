@@ -5,13 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
-import ru.cft.optimusgang.licenses.repository.model.entities.User;
 import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 import ru.cft.optimusgang.licenses.service.LicenseService;
-import ru.cft.optimusgang.licenses.service.UserService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/")

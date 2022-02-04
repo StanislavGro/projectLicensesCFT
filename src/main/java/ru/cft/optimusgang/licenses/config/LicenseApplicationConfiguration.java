@@ -1,4 +1,4 @@
-package ru.cft.yellowrubberduck;
+package ru.cft.optimusgang.licenses.config;
 
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
@@ -18,7 +18,7 @@ import java.time.Instant;
 
 @Configuration
 @EnableAutoConfiguration
-public class YellowRubberDuckConfiguration {
+public class LicenseApplicationConfiguration {
     private static final String KEY_TYPE = "RSA";
 
     @Bean
