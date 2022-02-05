@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class LicensesApplication {
-//Test commitеее
-	public static void main(String[] args) {
-		SpringApplication.run(LicensesApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(LicensesApplication.class, args);
+    }
 }
