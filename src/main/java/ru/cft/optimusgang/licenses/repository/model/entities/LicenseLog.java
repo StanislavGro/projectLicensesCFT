@@ -2,6 +2,7 @@ package ru.cft.optimusgang.licenses.repository.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.GenericGenerator;
+import ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,12 +23,12 @@ public class LicenseLog implements Serializable {
     private License license;
 
     @Column(name = "license_status")
-    private boolean licenseStatus;
+    private LicenseStatus licenseStatus;
 
     public LicenseLog() {
     }
 
-    public LicenseLog(License license, boolean licenseStatus) {
+    public LicenseLog(License license, LicenseStatus licenseStatus) {
         this.license = license;
         this.licenseStatus = licenseStatus;
     }
@@ -36,7 +37,7 @@ public class LicenseLog implements Serializable {
         this.license = license;
     }
 
-    public void setLicenseStatus(boolean licenseStatus) {
+    public void setLicenseStatus(LicenseStatus licenseStatus) {
         this.licenseStatus = licenseStatus;
     }
 
@@ -44,7 +45,7 @@ public class LicenseLog implements Serializable {
         return license;
     }
 
-    public boolean getLicenseStatus() {
+    public LicenseStatus getLicenseStatus() {
         return licenseStatus;
     }
 }

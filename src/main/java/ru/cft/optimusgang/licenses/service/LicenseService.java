@@ -18,4 +18,6 @@ public interface LicenseService {
 
     //POST /license/check
     public LicenseStatus checkLicense(License license);
+
+    public List<License> getAllLicenses();
 }

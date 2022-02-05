@@ -18,4 +18,5 @@ public interface LicenseRepository extends CrudRepository<License, Long> {
 
     @Query("SELECT license FROM License license WHERE license.user.userId = :companyId AND license.user.userType = '1'")
     List<License> getAllByCompanyId(@Param("companyId")Long companyId);
+
 }

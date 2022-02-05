@@ -80,4 +80,9 @@ public class LicenseServiceImpl implements LicenseService {
         }
         return LicenseStatus.LICENSE_INVALID;
     }
+
+    @Override
+    public List<License> getAllLicenses() {
+        return (List<License>) licenseRepository.findAll();
+    }
 }

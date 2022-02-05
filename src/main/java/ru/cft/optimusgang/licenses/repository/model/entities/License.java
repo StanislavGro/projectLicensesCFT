@@ -108,4 +108,15 @@ public class License implements Serializable {
         return product;
     }
 
+    @Override
+    public String toString() {
+        return "License{" +
+                "id=" + id +
+                ", openKey='" + openKey + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", user=" + user +
+                ", product=" + product +
+                '}';
+    }
 }
