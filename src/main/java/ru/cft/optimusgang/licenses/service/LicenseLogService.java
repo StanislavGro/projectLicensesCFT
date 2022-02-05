@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface LicenseLogService{
 
-    @Scheduled(initialDelay = 3000, fixedRate = 3000)
+    @Scheduled(initialDelay = 60000, fixedRate = 60000)
     @Async
     void validityСheck();
 }
