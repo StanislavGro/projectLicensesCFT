@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import ru.cft.optimusgang.licenses.repository.LicenseLogRepository;
 import ru.cft.optimusgang.licenses.repository.LicenseRepository;
 import ru.cft.optimusgang.licenses.repository.model.entities.License;
+import ru.cft.optimusgang.licenses.repository.model.entities.LicenseLog;
 import ru.cft.optimusgang.licenses.service.LicenseLogService;
 
 import java.time.Duration;
@@ -14,8 +15,11 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
+
+import static ru.cft.optimusgang.licenses.repository.model.enums.LicenseStatus.LICENSE_VALID;
 
 @Service
 public class LicenseLogServiceImpl implements LicenseLogService {
@@ -37,6 +41,7 @@ public class LicenseLogServiceImpl implements LicenseLogService {
     public void validityСheck() {
 
         List<License> licenseList = (List<License>) licenseRepository.findAll();
+        List<LicenseLog> licenseLogs = new LinkedList<>();
 
         for(License license: licenseList){
 
@@ -46,13 +51,14 @@ public class LicenseLogServiceImpl implements LicenseLogService {
             if(diff <= 7){
 
                 licenseLogLogger.info("I'm added into license_log table note" + license);
+                licenseLogs.add(new LicenseLog(license, LICENSE_VALID));
 
             }
             else {
                 System.out.println("I'm NOT added into license_log table note" + license);
             }
         }
-
+        licenseLogRepository.saveAll(licenseLogs);
         licenseLogLogger.info("I'm working");
 
     }
